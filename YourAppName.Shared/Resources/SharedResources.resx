@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountAlreadyVerified" xml:space="preserve">
+    <value>This account is already verified.</value>
+  </data>
+  <data name="AccountDeactivated" xml:space="preserve">
+    <value>Your account has been deactivated.</value>
+  </data>
+  <data name="AccountIsDisabled" xml:space="preserve">
+    <value>This account has been deactivated. Please contact the system administrator.</value>
+  </data>
+  <data name="AccountLocked" xml:space="preserve">
+    <value>Your account is temporarily locked.</value>
+  </data>
+  <data name="AccountModified" xml:space="preserve">
+    <value>Your account permissions or status have changed. Please log in again.</value>
+  </data>
+  <data name="AccountVerifiedSuccessfully" xml:space="preserve">
+    <value>Account verified successfully!</value>
+  </data>
+  <data name="AllSessionsRevokedSuccessfully" xml:space="preserve">
+    <value>All active sessions have been terminated.</value>
+  </data>
+  <data name="BadRequest" xml:space="preserve">
+    <value>Bad request</value>
+  </data>
+  <data name="CannotDeactivateOwnAccount" xml:space="preserve">
+    <value>You cannot deactivate your own account.</value>
+  </data>
+  <data name="CodeMustBe6Digits" xml:space="preserve">
+    <value>Code must be exactly 6 digits.</value>
+  </data>
+  <data name="CodeMustBeNumbersOnly" xml:space="preserve">
+    <value>Code must contain numbers only.</value>
+  </data>
+  <data name="CodeSentSuccessfully" xml:space="preserve">
+    <value>Verification code has been sent successfully.</value>
+  </data>
+  <data name="CodeVerifiedSuccess" xml:space="preserve">
+    <value>The verification code is valid.</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Created successfully</value>
+  </data>
+  <data name="CurrentPasswordIsWrong" xml:space="preserve">
+    <value>The current password is incorrect.</value>
+  </data>
+  <data name="Deleted" xml:space="preserve">
+    <value>Deleted successfully</value>
+  </data>
+  <data name="EmailNotConfirmed" xml:space="preserve">
+    <value>Your email address has not been verified yet.</value>
+  </data>
+  <data name="EmailOrPasswordIsWrong" xml:space="preserve">
+    <value>Invalid email or password.</value>
+  </data>
+  <data name="FailedToAddNewRoles" xml:space="preserve">
+    <value>Failed to add the new roles to the user.</value>
+  </data>
+  <data name="FailedToAddPermission" xml:space="preserve">
+    <value>Failed to assign new permissions. The transaction was aborted and no changes were saved.</value>
+  </data>
+  <data name="FailedToRemoveOldRoles" xml:space="preserve">
+    <value>Failed to remove the user's old roles.</value>
+  </data>
+  <data name="FailedToRemovePermission" xml:space="preserve">
+    <value>Failed to remove old permissions. The transaction was aborted and no changes were saved.</value>
+  </data>
+  <data name="FailedToUpdatePermissions" xml:space="preserve">
+    <value>An unexpected database error occurred while updating permissions. No changes were saved.</value>
+  </data>
+  <data name="FailedToUpdateRoles" xml:space="preserve">
+    <value>An error occurred while updating roles. No changes were saved.</value>
+  </data>
+  <data name="InvalidCode" xml:space="preserve">
+    <value>Invalid or expired code.</value>
+  </data>
+  <data name="InvalidEmailOrPhone" xml:space="preserve">
+    <value>Must be a valid Email Address or Phone Number.</value>
+  </data>
+  <data name="InvalidOrExpiredCode" xml:space="preserve">
+    <value>The verification code is invalid or has expired.</value>
+  </data>
+  <data name="InvalidToken" xml:space="preserve">
+    <value>Invalid token.</value>
+  </data>
+  <data name="LoggedOutSuccessfully" xml:space="preserve">
+    <value>Logged out successfully.</value>
+  </data>
+  <data name="MaximumLength" xml:space="preserve">
+    <value>This field cannot exceed 100 characters.</value>
+  </data>
+  <data name="NoActiveSessionsFound" xml:space="preserve">
+    <value>No active sessions were found for this user.</value>
+  </data>
+  <data name="NotEmpty" xml:space="preserve">
+    <value>This field must not be empty</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Data not found</value>
+  </data>
+  <data name="PasswordChangedSuccessfully" xml:space="preserve">
+    <value>Password changed successfully.</value>
+  </data>
+  <data name="PasswordMinimumLength" xml:space="preserve">
+    <value>Password must be at least 6 characters.</value>
+  </data>
+  <data name="PasswordRequirements" xml:space="preserve">
+    <value>Password must be at least 6 characters long, and contain at least one number and one lowercase letter.</value>
+  </data>
+  <data name="PasswordRequiresDigit" xml:space="preserve">
+    <value>Password must contain at least one number.</value>
+  </data>
+  <data name="PasswordRequiresLower" xml:space="preserve">
+    <value>Password must contain at least one lowercase letter.</value>
+  </data>
+  <data name="PasswordResetEmailSent" xml:space="preserve">
+    <value>If the account exists, a verification code has been sent to your registered email or phone number.</value>
+  </data>
+  <data name="PasswordResetFailed" xml:space="preserve">
+    <value>Failed to reset password.</value>
+  </data>
+  <data name="PasswordResetSuccess" xml:space="preserve">
+    <value>Your password has been reset successfully.</value>
+  </data>
+  <data name="PasswordsDoNotMatch" xml:space="preserve">
+    <value>Passwords do not match.</value>
+  </data>
+  <data name="PhoneNotConfirmed" xml:space="preserve">
+    <value>Your phone number has not been verified yet.</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>This field is required</value>
+  </data>
+  <data name="RoleClaimsUpdatedSuccessfully" xml:space="preserve">
+    <value>Role permissions have been successfully updated.</value>
+  </data>
+  <data name="RoleHasUsers" xml:space="preserve">
+    <value>Cannot delete this role because there are users assigned to it.</value>
+  </data>
+  <data name="RoleIsExist" xml:space="preserve">
+    <value>This role already exists.</value>
+  </data>
+  <data name="RoleNotExist" xml:space="preserve">
+    <value>The specified role does not exist or could not be found.</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Operation completed successfully</value>
+  </data>
+  <data name="TokenAlreadyRevoked" xml:space="preserve">
+    <value>This token has already been revoked.</value>
+  </data>
+  <data name="TokenIsInvalid" xml:space="preserve">
+    <value>The security token is invalid or expired.</value>
+  </data>
+  <data name="TokenNotFound" xml:space="preserve">
+    <value>Session not found or already closed.</value>
+  </data>
+  <data name="TokenRevokedSuccessfully" xml:space="preserve">
+    <value>Token has been revoked successfully.</value>
+  </data>
+  <data name="Unauthorized" xml:space="preserve">
+    <value>Unauthorized access</value>
+  </data>
+  <data name="UnprocessableEntity" xml:space="preserve">
+    <value>Validation error occurred</value>
+  </data>
+  <data name="Updated" xml:space="preserve">
+    <value>Updated successfully.</value>
+  </data>
+  <data name="UserAlreadyExists" xml:space="preserve">
+    <value>This email or phone number is already registered.</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>User not found.</value>
+  </data>
+</root>
