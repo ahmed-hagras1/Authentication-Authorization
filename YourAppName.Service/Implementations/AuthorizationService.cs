@@ -42,7 +42,7 @@ namespace YourAppName.Service.Implementations
         }
         public async Task<ApplicationRole?> GetRoleByIdAsync(string id, CancellationToken cancellationToken)
         {
-            return await _roleManager.Roles.FirstOrDefaultAsync( r =>  r.Id == id, cancellationToken);
+            return await _roleManager.Roles.FirstOrDefaultAsync(r => r.Id == id, cancellationToken);
         }
         public async Task<string> AddRoleAsync(string roleName)
         {
@@ -96,7 +96,7 @@ namespace YourAppName.Service.Implementations
             var role = await _roleManager.FindByIdAsync(roleId);
             if (role == null) return "NotFound";
 
-            var usersInRole = await _appDbContext.UserRoles.AnyAsync(ur => ur.RoleId ==  roleId);
+            var usersInRole = await _appDbContext.UserRoles.AnyAsync(ur => ur.RoleId == roleId);
 
             if (usersInRole)
             {
@@ -175,7 +175,7 @@ namespace YourAppName.Service.Implementations
                 {
                     var addResult = await _userManager.AddToRolesAsync(user, rolesToAdd);
 
-                    
+
 
                     if (!addResult.Succeeded)
                     {
@@ -203,16 +203,37 @@ namespace YourAppName.Service.Implementations
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null) return null;
 
-            // Get the claims this USER already has directly assigned to them
-            var existingClaims = await _userManager.GetClaimsAsync(user);
-            var existingClaimValues = existingClaims
-                .Where(x => x.Type == Permissions.Type) // Only look at Permission claims!
+            // 1. Get Direct User Claims
+            var existingUserClaims = await _userManager.GetClaimsAsync(user);
+            var directClaimValues = existingUserClaims
+                .Where(x => x.Type == Permissions.Type)
                 .Select(x => x.Value)
-                .ToList();
+                .ToHashSet(); // HashSet is faster for lookups
+
+            // 2. Get Inherited Role Claims
+            var userRoles = await _userManager.GetRolesAsync(user);
+            var inheritedClaimValues = new HashSet<string>();
+
+            foreach (var roleName in userRoles)
+            {
+                var role = await _roleManager.FindByNameAsync(roleName);
+                if (role != null)
+                {
+                    var roleClaims = await _roleManager.GetClaimsAsync(role);
+                    var permissionsInRole = roleClaims
+                        .Where(x => x.Type == Permissions.Type)
+                        .Select(x => x.Value);
+
+                    foreach (var claimValue in permissionsInRole)
+                    {
+                        inheritedClaimValues.Add(claimValue);
+                    }
+                }
+            }
 
             var userClaimsList = new List<UserClaimDto>();
 
-            // Use Reflection to grab ALL possible permissions in the system
+            // 3. Use Reflection to grab ALL possible permissions in the system
             var permissionClasses = typeof(Permissions).GetNestedTypes(BindingFlags.Public | BindingFlags.Static);
 
             foreach (var module in permissionClasses)
@@ -225,11 +246,11 @@ namespace YourAppName.Service.Implementations
                 {
                     if (permission != null)
                     {
-                        // 3. Add to the checklist and check if the user currently holds it
                         userClaimsList.Add(new UserClaimDto
                         {
                             PermissionName = permission,
-                            HasPermission = existingClaimValues.Contains(permission)
+                            HasDirectPermission = directClaimValues.Contains(permission),
+                            InheritedFromRole = inheritedClaimValues.Contains(permission)
                         });
                     }
                 }
@@ -241,6 +262,7 @@ namespace YourAppName.Service.Implementations
                 UserClaims = userClaimsList
             };
         }
+
         public async Task<string> UpdateUserClaimsAsync(string userId, List<UserClaimDto> requestClaims)
         {
             var user = await _userManager.FindByIdAsync(userId);
@@ -254,14 +276,16 @@ namespace YourAppName.Service.Implementations
             var existingClaimValues = existingPermissionClaims.Select(x => x.Value).ToList();
 
             // Figure out which claims to ADD
+            // 🟢 التعديل هنا: نستخدم HasDirectPermission
             var claimsToAdd = requestClaims
-                .Where(x => x.HasPermission && !existingClaimValues.Contains(x.PermissionName))
+                .Where(x => x.HasDirectPermission && !existingClaimValues.Contains(x.PermissionName))
                 .ToList();
 
             // Figure out which claims to REMOVE
             // We match against existingPermissionClaims because Identity requires the actual Claim object to remove it
+            // 🟢 التعديل هنا: نستخدم HasDirectPermission
             var claimsToRemove = existingPermissionClaims
-                .Where(x => requestClaims.Any(req => req.PermissionName == x.Value && !req.HasPermission))
+                .Where(x => requestClaims.Any(req => req.PermissionName == x.Value && !req.HasDirectPermission))
                 .ToList();
 
             // 🛡️ START TRANSACTION 🛡️

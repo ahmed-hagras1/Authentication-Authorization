@@ -18,6 +18,8 @@ using Microsoft.AspNetCore.RateLimiting;
 using System.Reflection;
 using YourAppName.Shared.Security;
 
+using Microsoft.OpenApi.Models;
+
 namespace YourAppName.API
 {
     public class Program
@@ -31,7 +33,35 @@ namespace YourAppName.API
                 // Add services to the container.
                 builder.Services.AddControllers();
                 builder.Services.AddEndpointsApiExplorer();
-                builder.Services.AddSwaggerGen();
+                builder.Services.AddSwaggerGen(options =>
+                {
+                    // 1. Define the Security Scheme for JWT Bearer
+                    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                    {
+                        Name = "Authorization",
+                        Type = SecuritySchemeType.Http,
+                        Scheme = "Bearer",
+                        BearerFormat = "JWT",
+                        In = ParameterLocation.Header,
+                        Description = "Enter your valid JWT token below.\r\n\r\nExample: 'eyJhGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'"
+                    });
+
+                    // 2. Apply the Security Requirement globally to all endpoints
+                    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                    {
+                         {
+                             new OpenApiSecurityScheme
+                             {
+                                 Reference = new OpenApiReference
+                                 {
+                                     Type = ReferenceType.SecurityScheme,
+                                     Id = "Bearer"
+                                 }
+                             },
+                             Array.Empty<string>()
+                         }
+                    });
+                });
 
                 // ENABLE CORS
                 // This allows the Frontend (React, Angular, Flutter, etc.) 
